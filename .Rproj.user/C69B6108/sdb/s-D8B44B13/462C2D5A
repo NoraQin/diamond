@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "library(shiny)\nlibrary(ggplot2)\n\n# GUI\n\nui <- fluidPage(\n  titlePanel(\"Diamonds Data\"),\n  sidebarLayout(\n    sidebarPanel(\n      helpText(\"This app is to visualize diamonds dataset\"),\n      textInput(inputId = \"title\", \n                label = \"Chart title\",\n                value = \"\"),\n      selectInput(inputId = \"pos\",\n                  label = \"Position\",\n                  choices = c(\"stack\", \"dodge\"),\n                  selected = \"stack\")\n    ),\n    mainPanel(\n      plotOutput(outputId = \"plot\")\n    )\n  )\n)\n\n\n# Server\n\nserver <- function(input, output){\n  output$plot = renderPlot({\n    ggplot(diamonds, aes(x = cut, fill = clarity)) +\n      geom_bar(position = input$pos) +\n      ggtitle(input$title)\n  })\n\n  \n}\n\n# Run the App\nshinyApp(ui, server)",
+    "created" : 1510024464914.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1797628569",
+    "id" : "462C2D5A",
+    "lastKnownWriteTime" : 1510026940,
+    "last_content_update" : 1510026940832,
+    "path" : "~/Documents/GitHub/diamond/diamondsVis/app.R",
+    "project_path" : "diamondsVis/app.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
